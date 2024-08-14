@@ -18,32 +18,51 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    let blendColor = lerpColor(myOrange,myPink,DrumColor);
   background(0);
 
-let eyeSize= map(other, 0,100, 50,300 )
-fill(250);
-ellipse(250,250, 150,eyeSize);
-ellipse(550,250, 150,eyeSize);
+//if(vocalMap>80){}
 
-let mouthSize = map(vocal, 0,100, 0,250)
-noStroke();
-fill(blendColor);
-rect(400,600, 200,mouthSize);
+//let eyeSize= map(other, 0,100, 50,300 )
+//fill(250);
+//ellipse(250,250, 150,eyeSize);
+//ellipse(550,250, 150,eyeSize);
 
-stroke(250);
-strokeWeight(5);
-line(400,300, 400,450);
+//let mouthSize = map(vocal, 0,100, 0,250)
+//noStroke();
+//fill(blendColor);
+//rect(400,600, 200,mouthSize);
+
+//stroke(250);
+//strokeWeight(5);
+//line(400,300, 400,450);
 //line(400,300, 360,450);
-line(400,300, 440,450);
+//line(400,300, 440,450);
 
-let noseSize = map(bass, 0,100, 70,100)
-noStroke();
-fill('red');
-ellipse(390,450, bass/1.5,bass);
-ellipse(410,450, bass/1.5,bass);
+//let noseSize = map(bass, 0,100, 70,100)
+//noStroke();
+//fill('red');
+//ellipse(390,450, bass/1.5,bass);
+//ellipse(410,450, bass/1.5,bass);
+strokeWeight(6);
+let drumMap = map(drum,0,100, 0,70);
+let bassMap = map(bass,0,100, 10,50);
+let LineStart = 250;
+let LengthofLine = 100;
+let LineEnd = LineStart+LengthofLine;
+let LS2 = 350;
+let LOL2 = 100;
+let LE2 = LS2+LOL2;
+stroke(bassMap,60,180);
+
+for(let i =1; i<=drumMap; i++){//++ = +1
+  let LStep2 = i*20;//higher this number further apart the lines are
+  rect(LS2,LStep2, LE2,LStep2);
+ }
+ 
+for(let i =1; i<=bassMap; i++){//++ = +1
+  let lineStep = i*20;//higher this number further apart the lines are
+  stroke(drumMap,200,90);
+  ellipse(LineStart,lineStep, LineEnd,lineStep);
+ }
 }
-
-
-  
-
    //// vocal bar is red
    //fill(200, 0, 0);
    //rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
