@@ -1,4 +1,3 @@
-
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   background(20)
@@ -6,7 +5,6 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   rectMode(CENTER)
   textSize(24);
   
- 
    let bar_spacing = height / 10;
    let bar_height = width / 12;
    let bar_pos_x = width / 2;
@@ -14,12 +12,8 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    let myOrange = color(214, 126, 11);
    let myPink = color(186, 4, 68);
    let DrumColor = map(drum, 0,100, 0,1);
-
    let blendColor = lerpColor(myOrange,myPink,DrumColor);
-  background(0);
-
-//if(vocalMap>80){}
-
+   background(0);
 //let eyeSize= map(other, 0,100, 50,300 )
 //fill(250);
 //ellipse(250,250, 150,eyeSize);
@@ -50,18 +44,24 @@ let LineEnd = LineStart+LengthofLine;
 let LS2 = 350;
 let LOL2 = 100;
 let LE2 = LS2+LOL2;
-stroke(bassMap,60,180);
+let Rot = 45
 
+stroke(bassMap,60,180);
+push();
 for(let i =1; i<=drumMap; i++){//++ = +1
   let LStep2 = i*20;//higher this number further apart the lines are
+  //rotate(Rot);
+  //translate(200,-100);
   rect(LS2,LStep2, LE2,LStep2);
  }
- 
+ pop();
+
 for(let i =1; i<=bassMap; i++){//++ = +1
   let lineStep = i*20;//higher this number further apart the lines are
   stroke(drumMap,200,90);
   ellipse(LineStart,lineStep, LineEnd,lineStep);
  }
+ 
 }
    //// vocal bar is red
    //fill(200, 0, 0);
