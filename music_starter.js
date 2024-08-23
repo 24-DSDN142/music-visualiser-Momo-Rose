@@ -8,7 +8,7 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
    let bar_spacing = height / 10;
    let bar_height = width / 12;
    let bar_pos_x = width / 2;
-
+   
    let myOrange = color(214, 126, 11);
    let myPink = color(186, 4, 68);
    let DrumColor = map(drum, 0,100, 0,1);
@@ -41,26 +41,30 @@ let bassMap = map(bass,0,100, 10,50);
 let LineStart = 250;
 let LengthofLine = 100;
 let LineEnd = LineStart+LengthofLine;
-let LS2 = 350;
-let LOL2 = 100;
-let LE2 = LS2+LOL2;
 let Rot = 45
 
-stroke(bassMap,60,180);
-push();
-for(let i =1; i<=drumMap; i++){//++ = +1
-  let LStep2 = i*20;//higher this number further apart the lines are
-  //rotate(Rot);
-  //translate(200,-100);
-  rect(LS2,LStep2, LE2,LStep2);
- }
- pop();
 
-for(let i =1; i<=bassMap; i++){//++ = +1
-  let lineStep = i*20;//higher this number further apart the lines are
-  stroke(drumMap,200,90);
-  ellipse(LineStart,lineStep, LineEnd,lineStep);
- }
+let a = 600*noise(0.005*frameCount);//400 = x&y position
+let b = 600*noise(0.005 * frameCount+100000);
+let noiseLevel = 400;
+let noiseScale = 0.005;
+
+for (let x=0;x <200;x+=1){
+let nx = noiseScale *x;
+let nt = noiseScale * frameCount;
+let c = noiseLevel *noise(nx,nt);
+
+ellipse(a,b,x,c);
+}
+
+stroke('red');
+point(800,400);
+//stroke(bassMap,60,180);
+//for(let i =1; i<=bassMap; i++){//++ = +1
+  //let lineStep = i*20;//higher this number further apart the lines are
+  //stroke(drumMap,200,90);
+  //ellipse(LineStart,lineStep, LineEnd,lineStep);
+ //}
  
 }
    //// vocal bar is red
@@ -68,25 +72,6 @@ for(let i =1; i<=bassMap; i++){//++ = +1
    //rect(bar_pos_x, height / 2 + 1 * bar_spacing, 4 * vocal, bar_height);
    //fill(0);
    //text("vocals", bar_pos_x, height / 2 + 1 * bar_spacing + 8);
- 
-   //// drum bar is green
-  // //fill(0, 200, 0);
-   //rect(bar_pos_x, height / 2 + 2 * bar_spacing, 4 * drum, bar_height);
-   //fill(0);
-   //text("drums", bar_pos_x, height / 2 + 2 * bar_spacing + 8);
- 
-   // bass bar is blue
-   //fill(50, 50, 240);
-   //rect(bar_pos_x, height / 2 + 3 * bar_spacing, 4 * bass, bar_height);
-   //fill(0);
-   //text("bass", bar_pos_x, height / 2 + 3 * bar_spacing + 8);
- 
-   //// other bar is white
-   //fill(200, 200, 200);
-   //rect(bar_pos_x, height / 2 + 4 * bar_spacing, 4 * other, bar_height);
-   //fill(0);
-   //text("other", bar_pos_x, height / 2 + 4 * bar_spacing + 8);
-   //fill(255, 255, 0);
  
    // display "words"
    //textAlign(CENTER);
