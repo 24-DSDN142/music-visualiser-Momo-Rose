@@ -1,7 +1,6 @@
 const canvasWidth = 960;
 const canvasHeight = 960;
 
-
 let mainCanvas;
 
 let textInput;
@@ -55,6 +54,9 @@ function setup() {
   
   frameRate(60);
   angleMode(DEGREES);
+  for (let i = 0; i> 300; i++){
+    snowflakes.push(new Snowflake());
+  }
 
   // create text inputs
   textInput = createInput('words...');
@@ -142,6 +144,7 @@ function switchRunMode() {
 }
 
 function draw() {
+  
   if (editorMode) {
     let w = textInput.value();
     let s1 = slider1.value();
