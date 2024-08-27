@@ -54,8 +54,12 @@ function setup() {
   
   frameRate(60);
   angleMode(DEGREES);
-
-  
+  colorMode(HSB);
+  /*for (let i = 0; i < 300; i++) {
+    // Add a new snowflake object to the array
+    snowflakes.push(new Snowflake());
+  }*/
+ previousParticlePosition = createVector();
   // create text inputs
   textInput = createInput('words...');
   textInput.parent('wordsContainer');
