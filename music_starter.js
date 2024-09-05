@@ -1,38 +1,129 @@
-//for Spiral 
-angle = 0;
-let incSpeed = 1;
-let scalar = 25; // width of the cicrle motion path, set this to something like 10 for a good spiral loop!
-let x = 0;
-let y = 0;
-let scalarInc = 0.5; //increment the scalar to make a spiral
-//For Snow
-let snowflakes = [];
-//For Trail
-let paths = [];
+let snowflakes = [];//For Snow
+let paths = [];//For Trail
+let fade;
+let fadeAmount = 1;
+fade = 0;
+
+let startTime = 0;
 
 let framesBetweenParticles = 5;
 let nextParticleFrame = 0;
-
 let previousParticlePosition;//location of last Particle
 let particleFadeFrames = 100;//time for particle to fade >num = faster fade
+
 
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   textFont('Verdana'); // please use CSS safe fonts
   textSize(24);
   rectMode(CORNER);
-  //ellipseMode(RADIUS);
-  let b1 = color(240,100,14)
+
+  let b1 = color(240,100,5)
+ let myBlue = color (178,100,100);
+  let myPurple = color (283,100,100)
+  let OtherColor = map(other, 0,100, 0,1);
+let blendColor = lerpColor(myBlue,myPurple,OtherColor)
+
+let logS = [100,200,300,400,500,600,700,800,900,1000,1100,1200];
 background(b1);
-let drumMap = map(drum, 0,100, 0,100);
+/*
+noFill();
+stroke(blendColor);
+if (millis()-startTime > 200){
+ellipse(450,400,logS[1]);
+}
+if (millis()-startTime > 250){
+  ellipse(450,400,logS[1]+50);
+  }
+
+if (millis()-startTime > 300){
+  ellipse(450,400,logS[2]);}
+  if (millis()-startTime > 350){
+    ellipse(450,400,logS[2]+50);
+    }
+
+if (millis()-startTime > 400){
+ellipse(450,400,logS[3]);
+}
+if (millis()-startTime > 450){
+  ellipse(450,400,logS[3]+50);
+  }
+
+if (millis()-startTime > 500){
+  ellipse(450,400,logS[4]);
+}
+if (millis()-startTime > 550){
+  ellipse(450,400,logS[4]+50);
+  }
+
+if (millis()-startTime > 600){
+  ellipse(450,400,logS[5]);
+}
+if (millis()-startTime > 650){
+  ellipse(450,400,logS[5]+50);
+  }
+
+if (millis()-startTime > 700){
+  ellipse(450,400,logS[6]);
+}
+if (millis()-startTime > 750){
+  ellipse(450,400,logS[6]+50);
+  }
+
+if (millis()-startTime > 800){
+  ellipse(450,400,logS[7]);
+}
+if (millis()-startTime > 850){
+  ellipse(450,400,logS[7]+50);
+  }
+
+if (millis()-startTime > 900){
+  ellipse(450,400,logS[8]);
+}
+if (millis()-startTime > 950){
+  ellipse(450,400,logS[8]+50);
+  }
+
+if (millis()-startTime > 1000){
+  ellipse(450,400,logS[9]);
+}
+if (millis()-startTime > 1050){
+  ellipse(450,400,logS[9]+50);
+  }
+
+if (millis()-startTime > 1100){
+  ellipse(450,400,logS[10]);
+}
+if (millis()-startTime > 1150){
+  ellipse(450,400,logS[0]+50);
+  }
+
+if (millis()-startTime > 1200){
+  ellipse(450,400,logS[11]);
+}
+if (millis()-startTime > 1250){
+  ellipse(450,400,logS[1]+50);
+  }
+if (millis() - startTime > 1200){
+startTime = millis();
+}
+*/
 
 //For Timing of Trail
 for (let path of paths){
   path.update();
   path.display();
  }
- 
+
 /*
-  let galaxy = { //blinking Stars
+fill(250,0,0,fade);
+if(fade<0) fadeAmount = 1;
+if (fade>225) fadeAmount =-10;
+fade += fadeAmount;
+fill(fade);
+circle(50,50,100);
+/*
+
+  let Blstars = { //blinking Stars
   locationX : random(width),
   locationY : random(height),
   size : random(1,6)//1 & 6 = size of star
@@ -40,14 +131,8 @@ for (let path of paths){
   ellipse(galaxy.locationX ,galaxy.locationY, galaxy.size, galaxy.size);
  */
 
-  /*
-y = sin(angle) * scalar + height/2;
-x = cos(angle) *  scalar + width/2;
-angle += incSpeed;
-scalar += scalarInc;
-fill(frameCount%359, 100,100);
-ellipse(x,y,50,50);
-*/
+
+/*
 }
 function mousePressed(){
   nextParticleFrame = frameCount;
@@ -125,14 +210,14 @@ class Particle {
   }
 }
 
-/*
+
 let currentTime = frameCount / 60;//lower number = higher freq,
 for (let flake of snowflakes) {
   // Update each snowflake position and display
   flake.update(currentTime);
   flake.display();
 }
-}
+
 // Define the snowflake class
 
 class Snowflake {
@@ -165,4 +250,6 @@ display() {
   fill(this.color);
   noStroke();
   ellipse(this.posX, this.posY, this.size);
-}*/
+}
+  */
+}

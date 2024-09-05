@@ -1,5 +1,6 @@
 const canvasWidth = 960;
 const canvasHeight = 960;
+//const bezierToolDefaultActive = false;
 
 let mainCanvas;
 
@@ -55,11 +56,13 @@ function setup() {
   frameRate(60);
   angleMode(DEGREES);
   colorMode(HSB);
-  /*for (let i = 0; i < 300; i++) {
+  
+/*for (let i = 0; i < 300; i++) {
     // Add a new snowflake object to the array
     snowflakes.push(new Snowflake());
   }*/
- previousParticlePosition = createVector();
+    previousParticlePosition = createVector();
+  
   // create text inputs
   textInput = createInput('words...');
   textInput.parent('wordsContainer');
@@ -79,6 +82,9 @@ function setup() {
   songButton.mousePressed(switchRunMode);
   songButton.parent('button1Container');
   songButton.elt.disabled = true;
+
+  //Initialise Bezier Helper
+  //BezierHelper.useBezierTool(bezierToolDefaultActive);
 
   vol1 = [];
   vol2 = [];
@@ -123,7 +129,7 @@ function switchRunMode() {
     slider2.elt.disabled = true;
     slider3.elt.disabled = true;
     slider4.elt.disabled = true;
-
+    
     editorMode = false;
     let now = millis();
     songEpoch = now + (debugFastRefresh ? 0 : 5000);
@@ -146,7 +152,6 @@ function switchRunMode() {
 }
 
 function draw() {
-  
   if (editorMode) {
     let w = textInput.value();
     let s1 = slider1.value();
