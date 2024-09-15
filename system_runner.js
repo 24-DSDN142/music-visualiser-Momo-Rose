@@ -1,5 +1,5 @@
-const canvasWidth = 960;
-const canvasHeight = 960;
+const canvasWidth = 900;
+const canvasHeight = 900;
 //const bezierToolDefaultActive = false;
 
 let mainCanvas;
@@ -43,6 +43,10 @@ function songLoadedSoFar(soFar) {
 function preload() {
   table = loadTable('volumes.csv', 'csv');
   words = loadStrings('words.txt');
+  img1 = loadImage('Galaxy_Overlay.jpg');
+  img2 = loadImage('Clouds.jpg');
+  img3 = loadImage('Lights.jpg');
+
 }
 
 let volumes = [];
