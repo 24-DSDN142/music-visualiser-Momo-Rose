@@ -38,7 +38,7 @@ let starSize = map(drum,0,100, 0,8);
 let starSize2 = map(bass,0,100, 0,5);
 let starSize3 = map(drum,0,100, 3,8);
 
-let mixTarget = map(vocal,0,100, 0.0,1.0);
+let mixTarget = map(other,0,100, 0.0,1.0);//for bg colour change
 mix = mix + ((mixTarget - mix) * easing);
 let bg = lerpColor(b1,b2,mix);
 background(bg);
