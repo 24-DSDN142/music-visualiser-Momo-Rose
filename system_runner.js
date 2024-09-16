@@ -44,8 +44,8 @@ function preload() {
   table = loadTable('volumes.csv', 'csv');
   words = loadStrings('words.txt');
   img1 = loadImage('Galaxy_Overlay.jpg');
-  img2 = loadImage('Clouds.jpg');
-  img3 = loadImage('Lights.jpg');
+  img2 = loadImage('Clouds.png');
+  img3 = loadImage('Lights.png');
 
 }
 
