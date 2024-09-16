@@ -24,6 +24,8 @@ let myPink = color (307,90,99,0.2);
 let myGreen = color (142,90,99,0.2);
 let OtherColor = map(other, 0,100, 0,100);
 let blendColor = lerpColor(myPink,myGreen,OtherColor);
+let massMap = map(vocal,0,100, 200,550);
+let massMap2 = map(vocal,0,100, 0.01,0.05);
 
 let mix = 0;
 let easing = 0.05;
@@ -34,6 +36,7 @@ let T2 = map(vocal, 0,100, 0.5,1)
 
 let starSize = map(drum,0,100, 0,8);
 let starSize2 = map(bass,0,100, 0,5);
+let starSize3 = map(drum,0,100, 3,8);
 
 let mixTarget = map(vocal,0,100, 0.0,1.0);
 mix = mix + ((mixTarget - mix) * easing);
@@ -103,6 +106,26 @@ ellipse(608,243,starSize2,starSize2);
 ellipse(538,222,starSize2,starSize2);
 ellipse(460,333,starSize2,starSize2);
 ellipse(422,80,starSize2,starSize2);
+
+ellipse(85+50,100,starSize3,starSize3);
+ellipse(30+50,150,starSize3,starSize3);
+ellipse(210+80,200-20,starSize3,starSize3);
+ellipse(100+80,270,starSize3,starSize3);
+ellipse(240+80,32-200,starSize3,starSize3);
+ellipse(385+80,400-20,starSize3,starSize3);
+ellipse(350+50,460,starSize3,starSize3);
+ellipse(100+80,550,starSize3,starSize3);
+ellipse(367+80,600-20,starSize3,starSize3);
+ellipse(489+50,610,starSize3,starSize3);
+ellipse(521+80,730-20,starSize3,starSize3);
+ellipse(598+80,780,starSize3,starSize3);
+ellipse(764+80,800,starSize3,starSize3);
+ellipse(920+50,860-20,starSize3,starSize3);
+ellipse(890+80,890-20,starSize3,starSize3);
+ellipse(900,900,starSize3,starSize3);
+ellipse(100+80,910,starSize3,starSize3);
+ellipse(700+80,920,starSize3,starSize3);
+ellipse(100+80,910,starSize3,starSize3);
 
 push();//clouds
 tint(0,0,250,T1);
@@ -214,9 +237,9 @@ let xc = constrain(450,lw,rw);
 strokeWeight(2);
 noFill();
 
-let noiseLevel = 450;
+let noiseLevel = massMap;
 let noiseScale = 0.015
-for (let x1 = 10; x1 < 300; x1+= 6){
+for (let x1 = 150; x1 < 300; x1+= 6){
   let nx = noiseScale * x1;
   let nt = noiseScale * frameCount;
 let c = noiseLevel * noise(nx,nt);
